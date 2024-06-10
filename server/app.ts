@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 require('dotenv').config();
 import { ErrorMiddleware } from "./middleware/error";
+import userRouter from "./routes/user.route"
 
 
 // body parser - for Cloudinary
@@ -16,6 +17,9 @@ app.use(cookieParser());
 app.use(cors({
     origin: process.env.ORIGIN, 
 }));
+
+// routes
+app.use("/api/v1", userRouter)
 
 // testing API
 app.get("/test", (req:Request , res:Response, next:NextFunction) => {
