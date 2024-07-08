@@ -9,7 +9,7 @@ import { redis } from "../utils/redis";
 export const isAuthenticated = catchAsyncError(async(req: Request, res: Response, next: NextFunction) => {
     
     const access_token = req.cookies.access_token;
-    console.log(access_token, "accesstoken");
+    
 
     if(!access_token){
         return next(new ErrorHandler("User is not Authenticated", 400));
